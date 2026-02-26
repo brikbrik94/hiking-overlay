@@ -1,0 +1,243 @@
+{
+  "version": 8,
+  "name": "hiking-overlay",
+  "glyphs": "https://tiles.oe5ith.at/assets/fonts/{fontstack}/{range}.pbf",
+  "sources": {
+    "hiking": {
+      "type": "vector",
+      "url": "pmtiles://https://tiles.oe5ith.at/overlays/pmtiles/hiking.pmtiles",
+      "attribution": "\u00a9 OpenStreetMap contributors (ODbL)"
+    }
+  },
+  "layers": [
+    {
+      "id": "hiking-low-casing",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "hiking_low",
+      "minzoom": 6,
+      "maxzoom": 10,
+      "paint": {
+        "line-color": "rgba(0,0,0,0.35)",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          1.6,
+          10,
+          3.8
+        ],
+        "line-opacity": 0.9
+      }
+    },
+    {
+      "id": "hiking-low-line",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "hiking_low",
+      "minzoom": 6,
+      "maxzoom": 10,
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "network"
+          ],
+          "iwn",
+          "#7b3294",
+          "nwn",
+          "#008837",
+          "#2b2b2b"
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          1.0,
+          10,
+          3.0
+        ],
+        "line-opacity": 0.9
+      }
+    },
+    {
+      "id": "hiking-high-casing",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "hiking_high",
+      "minzoom": 11,
+      "paint": {
+        "line-color": "rgba(0,0,0,0.35)",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          1.8,
+          14,
+          4.6
+        ],
+        "line-opacity": 0.95
+      }
+    },
+    {
+      "id": "hiking-high-line",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "hiking_high",
+      "minzoom": 11,
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "network"
+          ],
+          "iwn",
+          "#7b3294",
+          "nwn",
+          "#008837",
+          "rwn",
+          "#1f78b4",
+          "lwn",
+          "#33a02c",
+          "#2b2b2b"
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          1.2,
+          14,
+          3.6
+        ],
+        "line-opacity": 0.95
+      }
+    },
+    {
+      "id": "hiking-extra",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "hiking_extra",
+      "minzoom": 13,
+      "paint": {
+        "line-color": "rgba(60,60,60,0.75)",
+        "line-width": 1,
+        "line-opacity": 0.85
+      }
+    },
+    {
+      "id": "via-ferrata-casing",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "via_ferrata",
+      "minzoom": 11,
+      "paint": {
+        "line-color": "rgba(0,0,0,0.45)",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          2.6,
+          14,
+          5.2
+        ],
+        "line-opacity": 0.95
+      }
+    },
+    {
+      "id": "via-ferrata-line",
+      "type": "line",
+      "source": "hiking",
+      "source-layer": "via_ferrata",
+      "minzoom": 11,
+      "paint": {
+        "line-color": "#d7191c",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          1.6,
+          14,
+          3.8
+        ],
+        "line-opacity": 0.95
+      }
+    },
+    {
+      "id": "via-ferrata-grade",
+      "type": "symbol",
+      "source": "hiking",
+      "source-layer": "via_ferrata",
+      "minzoom": 14,
+      "filter": [
+        "any",
+        [
+          "has",
+          "via_ferrata_scale_label"
+        ],
+        [
+          "has",
+          "via_ferrata_scale"
+        ]
+      ],
+      "layout": {
+        "symbol-placement": "line",
+        "symbol-spacing": 600,
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "via_ferrata_scale_label"
+          ],
+          [
+            "get",
+            "via_ferrata_scale"
+          ]
+        ],
+        "text-font": [
+          "Noto-Sans-Bold"
+        ],
+        "text-size": 12,
+        "text-max-angle": 30,
+        "text-rotation-alignment": "map",
+        "text-keep-upright": true
+      },
+      "paint": {
+        "text-color": "rgba(20,20,20,0.95)",
+        "text-halo-color": "rgba(255,255,255,0.90)",
+        "text-halo-width": 1.4
+      }
+    }
+  ]
+}

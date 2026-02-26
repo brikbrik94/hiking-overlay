@@ -1,0 +1,9 @@
+*.osm.pbf
+*.geojsonseq
+*.pmtiles
+*.mbtiles
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
